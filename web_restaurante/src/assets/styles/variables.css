@@ -1,0 +1,7 @@
+:root{
+    --primary-900: #7e097e; /* Logo, Navbar, Sidebar, Botones principales, Headers importantes, Fondo de secciones destacadas */
+    --primary-700: #9d2a9c; /* Botones: 'guardar', 'crear'; Links importantes, Tabs activos, Badges principales */
+    --primary-500: #bc4ab9; /* Hover, Iconos, Estados activos, Bordes, Cards seleccionadas */
+    --primary-300: #db6bd7; /* Gradientes, Fondos suaves, Ilustraciones, Separadores, Chips */
+    --primary-100: #fa8bf5; /* Background de tarjetas, alertas suaves, Hover ligero, Estados 'nuevo', Highlights */
+}
