@@ -3,31 +3,27 @@
     <div class="login-card">
       <div class="login-header">
         <div class="logo-wrapper">
-          <svg class="logo-icon" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="var(--primary-500)" />
-            <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z" fill="var(--primary-900)" />
-            <circle cx="12" cy="12" r="2" fill="white" />
-          </svg>
-          <h1 class="app-title">Mi App</h1>
+          <img src="@/assets/icons/logo.jpeg" alt="Logo" class="logo-image" />
+          <h1 class="app-title"> Delivery</h1>
         </div>
         <h2 class="login-title">Iniciar Sesión</h2>
         <p class="login-subtitle">Accede a tu cuenta para continuar</p>
       </div>
 
       <form @submit.prevent="handleSubmit" class="login-form">
+
         <div class="form-group">
-          <label for="email" class="form-label">
+          <label for="username" class="form-label">
             <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
             </svg>
-            Correo Electrónico
+            Nombre de Usuario
           </label>
-          <input id="email" v-model="loginForm.email" type="email" required class="form-input"
-            :class="{ error: touched.email && errors.email }" placeholder="tu@email.com"
-            @blur="validateField('email')" />
-          <span v-if="touched.email && errors.email" class="field-error">
-            {{ errors.email }}
+          <input id="username" v-model="loginForm.username" type="text" required class="form-input"
+            :class="{ error: touched.username && errors.username }" placeholder="usuario123"
+            @blur="validateField('username')" />
+          <span v-if="touched.username && errors.username" class="field-error">
+            {{ errors.username }}
           </span>
         </div>
 
@@ -60,6 +56,25 @@
           </div>
           <span v-if="touched.password && errors.password" class="field-error">
             {{ errors.password }}
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="password2" class="form-label">
+            <svg class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                clip-rule="evenodd" />
+            </svg>
+            Confirmar Contraseña
+          </label>
+          <div class="password-wrapper">
+            <input id="password2" v-model="loginForm.password2" :type="showPassword ? 'text' : 'password'" required
+              class="form-input password-input" :class="{ error: touched.password2 && errors.password2 }"
+              placeholder="••••••••" @blur="validateField('password2')" />
+          </div>
+          <span v-if="touched.password2 && errors.password2" class="field-error">
+            {{ errors.password2 }}
           </span>
         </div>
 
@@ -145,6 +160,12 @@ const handleSubmit = async () => {
     touched.value[key] = true;
     validateField(key);
   });
+
+  // Verificar que las contraseñas coincidan ANTES de enviar
+  if (loginForm.password !== loginForm.password2) {
+    error.value = 'Las contraseñas no coinciden';
+    return;
+  }
 
   // Si hay errores, no enviar
   if (Object.keys(errors.value).length > 0) {

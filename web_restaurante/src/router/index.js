@@ -29,16 +29,14 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to) => {
   const authStore = useAuthStore();
   const isAuthenticated = authStore.isAuthenticated;
 
   if (to.meta.requiresAuth && !isAuthenticated) {
-    next('/login');
+    return '/login';
   } else if (to.meta.guest && isAuthenticated) {
-    next('/');
-  } else {
-    next();
+    return '/';
   }
 });
 

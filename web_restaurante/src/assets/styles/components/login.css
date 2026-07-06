@@ -48,7 +48,7 @@
 
 /* Card de login */
 .login-card {
-  background: var(--bg-secondary);
+  background: rgb(80, 80, 80);
   border-radius: var(--radius-xl);
   padding: var(--spacing-10);
   width: 100%;
@@ -158,7 +158,7 @@
   font-size: 0.875rem;
   transition: all var(--transition-fast);
   background: white;
-  color: var(--text-primary);
+  color: black;
 }
 
 .form-input:focus {
@@ -168,7 +168,7 @@
 }
 
 .form-input::placeholder {
-  color: #9ca3af;
+  color: #40444b;
 }
 
 .form-input.error {
@@ -349,5 +349,50 @@
     flex-direction: column;
     gap: var(--spacing-2);
     align-items: flex-start;
+  }
+}
+
+/* Logo */
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-6);
+}
+
+/* Si usas img */
+.logo-image {
+  width: 100px;
+  /* height: 48px; */
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  filter: drop-shadow(0 2px 8px rgba(126, 9, 126, 0.3));
+}
+
+/* Si usas svg */
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 2px 8px rgba(126, 9, 126, 0.3));
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.app-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-900), var(--primary-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
   }
 }
