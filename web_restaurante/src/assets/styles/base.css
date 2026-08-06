@@ -1,0 +1,87 @@
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  /* background: var(--bg-primary); */
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+a {
+  color: var(--primary-500);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-700);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-100);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-500);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-700);
+}
+
+/* Utilidades */
+.text-primary-900 {
+  color: var(--primary-900);
+}
+.text-primary-700 {
+  color: var(--primary-700);
+}
+.text-primary-500 {
+  color: var(--primary-500);
+}
+.text-primary-300 {
+  color: var(--primary-300);
+}
+.text-primary-100 {
+  color: var(--primary-100);
+}
+
+.bg-primary-900 {
+  background-color: var(--primary-900);
+}
+.bg-primary-700 {
+  background-color: var(--primary-700);
+}
+.bg-primary-500 {
+  background-color: var(--primary-500);
+}
+.bg-primary-300 {
+  background-color: var(--primary-300);
+}
+.bg-primary-100 {
+  background-color: var(--primary-100);
+}

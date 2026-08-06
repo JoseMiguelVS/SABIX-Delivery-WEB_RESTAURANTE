@@ -17,4 +17,17 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  server: {
+    port: 5173,
+    proxy: {
+      '/api': {
+        target: 'https://sabi-x-delivery.duckdns.org',
+        changeOrigin: true,
+        secure: false,
+      }
+    }
+  },
+  css: {
+    postcss: './postcss.config.cjs',
+  },
 })
