@@ -8,11 +8,6 @@ export const getAvatarColor = (name) => {
   return colors[name ? name.length % colors.length : 0];
 };
 
-export const getRoleLabel = (role) => {
-  const labels = { admin: 'Administrador', user: 'Usuario', editor: 'Editor' };
-  return labels[role] || role;
-};
-
 export const getStatusLabel = (status) => {
   const labels = { active: 'Activo', inactive: 'Inactivo' };
   return labels[status] || status;
@@ -25,7 +20,7 @@ export const formatDate = (date) => {
 
 export const formatDateFull = (date) => {
   if (!date) return '---';
-  return new Date(date).toLocaleDateString('es-ES', { 
-    year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' 
+  return new Date(date).toLocaleDateString('es-ES', {
+    year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
   });
 };

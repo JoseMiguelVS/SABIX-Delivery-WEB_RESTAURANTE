@@ -48,7 +48,7 @@
 
 /* Card de login */
 .login-card {
-  background: rgb(80, 80, 80);
+  background: var(--primary-700);
   border-radius: var(--radius-xl);
   padding: var(--spacing-10);
   width: 100%;
@@ -172,7 +172,7 @@
 }
 
 .form-input.error {
-  border-color: #dc2626;
+  border-color: #a10000;
 }
 
 .form-input.error:focus {
@@ -361,7 +361,7 @@
   margin-bottom: var(--spacing-6);
 }
 
-/* Si usas img */
+/* img */
 .logo-image {
   width: 100px;
   /* height: 48px; */
@@ -370,7 +370,7 @@
   filter: drop-shadow(0 2px 8px rgba(126, 9, 126, 0.3));
 }
 
-/* Si usas svg */
+/*  svg */
 .logo-icon {
   width: 48px;
   height: 48px;

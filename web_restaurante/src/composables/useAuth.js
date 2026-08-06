@@ -175,13 +175,15 @@ export function useAuth() {
       const userData = {
         full_name: registerForm.full_name,
         username: registerForm.username,
-        address: registerForm.address || '',
+        restaurant_address: registerForm.address || '',
         bank_account: registerForm.bank_account || '',
         phone: registerForm.phone || '',
         email: registerForm.email,
+        restaurant_name: registerForm.restaurant_name || '',
         schedule: registerForm.schedule || '',
         password: registerForm.password,
         password2: registerForm.confirm_password,
+        user_type: 'restaurant', // Asignar un valor predeterminado para user_type
       }
 
       const result = await authStore.register(userData)
@@ -229,6 +231,7 @@ export function useAuth() {
     registerForm.bank_account = ''
     registerForm.phone = ''
     registerForm.email = ''
+    registerForm.restaurant_name = ''
     registerForm.schedule = ''
     registerForm.password = ''
     registerForm.confirm_password = ''

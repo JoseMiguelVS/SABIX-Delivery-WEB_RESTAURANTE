@@ -3,7 +3,8 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 
-// Importar estilos (un solo archivo)
+// Importar estilos
+import './assets/styles/tailwind.css';
 import './assets/styles/main.css';
 
 const app = createApp(App);

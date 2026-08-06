@@ -105,6 +105,17 @@
           </span>
         </div>
 
+        <!-- Nombre del Restaurante -->
+        <div class="form-group">
+          <label class="form-label">Nombre del Restaurante</label>
+          <input v-model="registerForm.restaurant_name" type="text" class="form-control"
+            :class="{ error: touched.restaurant_name && errors.restaurant_name }" placeholder="Nombre del Restaurante"
+            @blur="validateField('restaurant_name')" />
+          <span v-if="touched.restaurant_name && errors.restaurant_name" class="field-error">
+            {{ errors.restaurant_name }}
+          </span>
+        </div>
+
         <!-- Horario de Atención -->
         <div class="form-group">
           <label class="form-label">Horario de Atención</label>

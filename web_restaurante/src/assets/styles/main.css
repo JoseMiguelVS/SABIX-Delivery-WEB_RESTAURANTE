@@ -12,7 +12,8 @@
 @import './components/forms.css';
 @import './components/modals.css';
 @import './components/login.css';
+@import './components/tables.css';
 
 /* ===== LAYOUTS ===== */
 /* @import './layouts/navbar.css'; */
-/* @import './layouts/sidebar.css'; */
+@import './layouts/sidebar.css';

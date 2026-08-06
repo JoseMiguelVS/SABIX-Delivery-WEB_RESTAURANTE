@@ -3,7 +3,7 @@ import api from './api'
 class AuthService {
   async login(username, password, password2) {
     try {
-      const response = await api.post('/v1/auth/login/', {
+      const response = await api.post('/v1/users/login/restaurant/', {
         username,
         password,
         password2,
@@ -26,8 +26,10 @@ class AuthService {
 
   async register(userData) {
     try {
-      if (userData.password && !userData.password2) {
+      // Asegurar que user_type y password2 esté presente
+      if (userData.password && !userData.password2 && !userData.user_type) {
         userData.password2 = userData.password
+        userData.user_type = 'restaurant'
       }
       const response = await api.post('/v1/users/register/', userData)
       return {
