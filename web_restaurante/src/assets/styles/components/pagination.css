@@ -1,0 +1,85 @@
+/* ============================================
+   PAGINATION
+   ============================================ */
+.table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: 1px solid #e5e7eb;
+  background: var(--bg-secondary);
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-3);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.pagination-btn:hover {
+  color: var(--primary-700);
+}
+
+.pagination-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.page-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.page-btn:hover {
+  background: var(--bg-primary);
+}
+
+.page-btn.active {
+  background: var(--primary-700);
+  color: var(--text-light);
+  box-shadow: var(--shadow-md);
+}
+
+.page-dots {
+  color: var(--text-secondary);
+  padding: 0 var(--spacing-1);
+}
+
+/* ============================================
+   RESPONSIVE PAGINATION
+   ============================================ */
+@media (max-width: 768px) {
+  .table-pagination {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    align-items: center;
+  }
+
+  .pagination-pages {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

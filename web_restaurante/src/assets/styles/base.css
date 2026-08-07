@@ -16,12 +16,20 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 body {
-  /* background: var(--bg-primary); */
-  color: var(--text-primary);
   min-height: 100vh;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*  Eliminar fondo blanco de la app */
+#app {
+  min-height: 100vh;
+  background: transparent;
 }
 
 a {

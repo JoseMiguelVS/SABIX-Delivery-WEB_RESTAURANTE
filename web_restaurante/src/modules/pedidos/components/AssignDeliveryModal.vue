@@ -95,7 +95,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { usePedidos } from '../composables/usePedidos'
-import pedidoService from '@/services/pedidoService'
+import pedidoService from '../services/pedidoService'
 
 const props = defineProps({
   visible: Boolean,

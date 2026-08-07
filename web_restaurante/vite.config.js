@@ -7,11 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    tailwindcss(),
-    vueDevTools(),
-  ],
+  plugins: [vue(), tailwindcss(), vueDevTools()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -24,9 +20,19 @@ export default defineConfig({
         target: 'https://sabi-x-delivery.duckdns.org',
         changeOrigin: true,
         secure: false,
-      }
-    }
+      },
+    },
   },
+  //  Configuración para el Service Worker
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
+  //  Asegurar que los archivos de public se copian
+  publicDir: 'public',
   css: {
     postcss: './postcss.config.cjs',
   },

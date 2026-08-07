@@ -11,6 +11,19 @@
       </div>
 
       <div class="navbar-actions">
+        <button v-if="isBrowserSupported" @click="togglePushNotifications" class="notification-push-btn"
+          :class="{ 'subscribed': isSubscribed }"
+          :title="isSubscribed ? 'Desactivar notificaciones' : 'Activar notificaciones'">
+          <svg v-if="isSubscribed" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
+          </svg>
+          <svg v-else viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
+          </svg>
+          <span class="notification-push-dot" v-if="isSubscribed"></span>
+        </button>
         <NotificationBell />
         <ThemeToggle />
         <div class="navbar-divider"></div>
@@ -35,11 +48,15 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/authStore';
 import NotificationBell from '@/components/notifications/NotificationBell.vue';
 import ThemeToggle from '@/components/ui/ThemeToggle.vue';
+import { useFcm } from '@/composables/useFcm'
+
+const { isSubscribed, subscribe, unsubscribe, initialize } = useFcm()
+const isBrowserSupported = ref(false)
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -66,10 +83,58 @@ const handleLogout = async () => {
   router.push('/login');
 };
 
+const togglePushNotifications = async () => {
+  if (isSubscribed.value) {
+    await unsubscribe()
+  } else {
+    await subscribe()
+  }
+}
+
 defineEmits(['toggle-sidebar']);
+onMounted(() => {
+  isBrowserSupported.value = 'Notification' in window && 'serviceWorker' in navigator
+  initialize()
+})
 </script>
 
 <style scoped>
+.notification-push-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  color: #94a3b8;
+}
+
+.notification-push-btn:hover {
+  background: #f1f5f9;
+  color: #1a1a1a;
+}
+
+.notification-push-btn.subscribed {
+  color: #7e097e;
+}
+
+.notification-push-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.notification-push-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
 .navbar {
   position: sticky;
   top: 0;
