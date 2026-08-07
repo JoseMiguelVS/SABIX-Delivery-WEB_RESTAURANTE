@@ -47,10 +47,6 @@
       <!-- Header con icono y nombre -->
       <div style="padding: 24px; border-bottom: 1px solid #e5e7eb; background: #f8fafc;">
         <div style="display: flex; align-items: center; gap: 16px;">
-          <div
-            style="width: 64px; height: 64px; border-radius: 12px; background: #fa8bf5; display: flex; align-items: center; justify-content: center; font-size: 32px;">
-            {{ categoria.icon || '📦' }}
-          </div>
           <div>
             <h2 style="font-size: 22px; font-weight: 700; color: #1a1a1a;">{{ categoria.name }}</h2>
             <span
@@ -67,14 +63,6 @@
       <!-- Información -->
       <div style="padding: 24px;">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-          <!-- ID -->
-          <div>
-            <p
-              style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #94a3b8; margin-bottom: 4px;">
-              ID</p>
-            <p style="font-size: 14px; color: #1a1a1a;">#{{ categoria.id }}</p>
-          </div>
-
           <!-- Estado -->
           <div>
             <p
@@ -116,13 +104,6 @@
             <p style="font-size: 13px; color: #64748b;">{{ formatDate(categoria.created_at) }}</p>
           </div>
 
-          <!-- Última actualización -->
-          <div>
-            <p
-              style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: #94a3b8; margin-bottom: 4px;">
-              Última actualización</p>
-            <p style="font-size: 13px; color: #64748b;">{{ formatDate(categoria.updated_at) }}</p>
-          </div>
         </div>
       </div>
     </div>

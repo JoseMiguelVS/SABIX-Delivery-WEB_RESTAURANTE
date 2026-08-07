@@ -1,9 +1,10 @@
 :root {
-  --primary-900: #7e097e; /* Logo, Navbar, Sidebar, Botones principales, Headers importantes, Fondo de secciones destacadas */
-  --primary-700: #9d2a9c; /* Botones: 'guardar', 'crear'; Links importantes, Tabs activos, Badges principales */
-  --primary-500: #bc4ab9; /* Hover, Iconos, Estados activos, Bordes, Cards seleccionadas */
-  --primary-300: #db6bd7; /* Gradientes, Fondos suaves, Ilustraciones, Separadores, Chips */
-  --primary-100: #fa8bf5; /* Background de tarjetas, alertas suaves, Hover ligero, Estados 'nuevo', Highlights */
+  /* Colores primarios */
+  --primary-900: #7e097e;
+  --primary-700: #9d2a9c;
+  --primary-500: #bc4ab9;
+  --primary-300: #db6bd7;
+  --primary-100: #fa8bf5;
 
   /* Colores de fondo y texto */
   --bg-primary: #f8f5f9;
@@ -39,4 +40,14 @@
   --spacing-8: 2rem;
   --spacing-10: 2.5rem;
   --spacing-12: 3rem;
+
+  /* Estados */
+  --success: #16a34a;
+  --success-bg: #dcfce7;
+  --error: #dc2626;
+  --error-bg: #fee2e2;
+  --warning: #f59e0b;
+  --warning-bg: #fef3c7;
+  --info: #3b82f6;
+  --info-bg: #dbeafe;
 }

@@ -1,32 +1,35 @@
-/* Botones */
+/* ============================================
+   BOTONES GLOBALES
+   ============================================ */
 .btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
   border: none;
   border-radius: var(--radius-md);
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all var(--transition-normal);
-  position: relative;
-  overflow: hidden;
+  transition: all var(--transition-fast);
 }
 
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
-/* Variantes */
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-700) 100%);
+  background: var(--primary-700);
   color: var(--text-light);
+  box-shadow: var(--shadow-md);
 }
 
-.btn-primary:hover:not(:disabled) {
-  box-shadow: 0 4px 12px rgba(126, 9, 126, 0.4);
-  transform: translateY(-2px);
+.btn-primary:hover {
+  background: var(--primary-900);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
@@ -34,127 +37,55 @@
   color: var(--text-light);
 }
 
-.btn-secondary:hover:not(:disabled) {
+.btn-secondary:hover {
   background: var(--primary-700);
-  box-shadow: 0 4px 12px rgba(188, 74, 185, 0.3);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--primary-500);
-  border: 2px solid var(--primary-500);
+  color: var(--text-primary);
+  border: 1px solid #e5e7eb;
 }
 
-.btn-outline:hover:not(:disabled) {
-  background: var(--primary-100);
-  border-color: var(--primary-700);
-  color: var(--primary-700);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--primary-500);
-}
-
-.btn-ghost:hover:not(:disabled) {
-  background: var(--primary-100);
-  color: var(--primary-700);
+.btn-outline:hover {
+  background: var(--bg-primary);
 }
 
 .btn-danger {
-  background: #dc2626;
+  background: var(--error);
   color: var(--text-light);
 }
 
 .btn-danger:hover:not(:disabled) {
   background: #b91c1c;
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-  transform: translateY(-2px);
 }
 
 .btn-success {
-  background: #16a34a;
+  background: var(--success);
   color: var(--text-light);
 }
 
-.btn-success:hover:not(:disabled) {
+.btn-success:hover {
   background: #15803d;
-  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
-  transform: translateY(-2px);
 }
 
-/* Tamaños */
 .btn-sm {
-  padding: var(--spacing-2) var(--spacing-3);
-  font-size: 0.75rem;
-}
-
-.btn-md {
-  padding: var(--spacing-2) var(--spacing-4);
-  font-size: 0.875rem;
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: 12px;
 }
 
 .btn-lg {
   padding: var(--spacing-3) var(--spacing-5);
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 .btn-block {
   width: 100%;
-}
-
-/* Loading state */
-.btn-loading {
-  position: relative;
-}
-
-.btn-spinner {
-  display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.btn-spinner svg {
-  width: 20px;
-  height: 20px;
-  animation: spin 1s linear infinite;
-}
-
-.spinner-track {
-  opacity: 0.25;
-}
-
-.spinner-path {
-  opacity: 0.75;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Efecto ripple */
-.btn::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translate(-50%, -50%);
-  transition:
-    width 0.6s,
-    height 0.6s;
-}
-
-.btn:active:not(:disabled)::after {
-  width: 300px;
-  height: 300px;
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

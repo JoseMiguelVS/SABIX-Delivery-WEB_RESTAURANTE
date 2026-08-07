@@ -1,33 +1,34 @@
 <template>
-  <div class="app-container">
-    <!-- Sidebar -->
-    <Sidebar v-if="authStore.isAuthenticated" />
-
-    <!-- Contenido principal -->
-    <div class="main-content" :class="{ 'main-content-collapsed': isSidebarCollapsed }">
-      <!-- Navbar -->
-      <Navbar v-if="authStore.isAuthenticated" @toggle-sidebar="toggleSidebar" />
-
-      <!-- Contenido de la página -->
-      <div class="page-content">
-        <router-view />
-      </div>
+  <div id="app" class="app-container">
+    <div class="decorative-blob blob-1"></div>
+    <div class="decorative-blob blob-2"></div>
+    <!-- Solo mostrar sidebar si está autenticado Y NO está en login/register -->
+    <Sidebar v-if="authStore.isAuthenticated && !isAuthPage" />
+    <div
+      class="main-content"
+      :class="{
+        'main-content-expanded': authStore.isAuthenticated && !isAuthPage,
+        'main-content-full': !authStore.isAuthenticated || isAuthPage
+      }"
+    >
+      <router-view />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import { useAuthStore } from '@/stores/authStore';
 import Sidebar from '@/components/layout/Sidebar.vue';
-import Navbar from '@/components/layout/Navbar.vue';
 
+const route = useRoute();
 const authStore = useAuthStore();
-const isSidebarCollapsed = ref(false);
 
-const toggleSidebar = () => {
-  isSidebarCollapsed.value = !isSidebarCollapsed.value;
-};
+//  Detectar si estamos en página de autenticación
+const isAuthPage = computed(() => {
+  return route.path === '/login' || route.path === '/register';
+});
 
 onMounted(() => {
   authStore.initialize();
@@ -35,48 +36,58 @@ onMounted(() => {
 </script>
 
 <style>
+/*  Reset global sin fondo blanco */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+#app {
+  min-height: 100vh;
+  background: transparent;
+  font-family: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+}
+
 .app-container {
   display: flex;
   min-height: 100vh;
-  background: #f8f5f9;
+  background: transparent;
 }
 
-/* ✅ Contenido principal con margen para el sidebar */
+/*  Contenido principal */
 .main-content {
   flex: 1;
-  margin-left: 250px;
+  margin-left: 264px;
   transition: margin-left 0.3s ease;
+  background: transparent;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-/* ✅ Cuando el sidebar está colapsado */
-.main-content-collapsed {
-  margin-left: 70px;
+.main-content-expanded {
+  margin-left: 76px;
 }
 
-/* ✅ Contenido de la página */
-.page-content {
-  flex: 1;
-  padding: 24px;
-  background: #f8f5f9;
+/* Cuando no hay sidebar (login/register), ocupar todo */
+.main-content-full {
+  margin-left: 0 !important;
 }
 
-/* ✅ Responsive */
 @media (max-width: 768px) {
   .main-content {
-    margin-left: 70px;
+    margin-left: 76px;
   }
 
-  .page-content {
-    padding: 16px;
+  .main-content-full {
+    margin-left: 0 !important;
   }
 }
 </style>
